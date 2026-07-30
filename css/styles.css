@@ -598,6 +598,10 @@ button {
   background: linear-gradient(135deg, #f59e0b, #ef4444);
 }
 
+.project-card__image--4 {
+  background: linear-gradient(135deg, #10b981, #3b82f6);
+}
+
 .project-card__body {
   padding: 1.5rem;
   display: flex;
