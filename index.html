@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alex Morgan — Front-End Developer portfolio showcasing projects, skills, and contact information.">
+  <title>Alex Morgan | Front-End Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="header" id="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="#hero" class="nav__logo">Alex<span class="nav__logo-accent">.</span>Morgan</a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#skills" class="nav__link">Skills</a></li>
+        <li><a href="#projects" class="nav__link">Projects</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--moon"></i>
+        <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--sun"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero section" id="hero">
+      <div class="container hero__container">
+        <div class="hero__content">
+          <p class="hero__greeting">Hello, I'm</p>
+          <h1 class="hero__title">Alex Morgan</h1>
+          <p class="hero__subtitle">Front-End Developer</p>
+          <p class="hero__description">
+            I craft responsive, accessible web experiences with clean code and thoughtful design.
+            Passionate about turning ideas into pixel-perfect interfaces.
+          </p>
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">View My Work</a>
+            <a href="#contact" class="btn btn--outline">Get In Touch</a>
+          </div>
+          <div class="hero__social">
+            <a href="https://github.com" class="hero__social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://linkedin.com" class="hero__social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://twitter.com" class="hero__social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__avatar">
+            <i class="fa-solid fa-code hero__avatar-icon"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about section" id="about">
+      <div class="container">
+        <h2 class="section__title">About Me</h2>
+        <div class="about__grid">
+          <div class="about__image">
+            <div class="about__image-placeholder">
+              <i class="fa-solid fa-user"></i>
+            </div>
+          </div>
+          <div class="about__content">
+            <p class="about__text">
+              I'm a front-end developer based in San Francisco with a passion for building
+              beautiful and functional web applications. With a background in design and
+              computer science, I bring a unique perspective to every project.
+            </p>
+            <p class="about__text">
+              When I'm not coding, you'll find me exploring new coffee shops, contributing
+              to open-source projects, or hiking the trails around the Bay Area.
+            </p>
+            <ul class="about__highlights">
+              <li class="about__highlight">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>B.S. Computer Science, Stanford University</span>
+              </li>
+              <li class="about__highlight">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>3+ years building web applications</span>
+              </li>
+              <li class="about__highlight">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>San Francisco, CA</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <h2 class="section__title">Skills</h2>
+        <p class="section__subtitle">Technologies and tools I work with</p>
+        <div class="skills__grid">
+          <div class="skills__category">
+            <h3 class="skills__category-title">
+              <i class="fa-solid fa-code"></i> Frontend
+            </h3>
+            <ul class="skills__list">
+              <li class="skills__item">HTML5 &amp; CSS3</li>
+              <li class="skills__item">JavaScript (ES6+)</li>
+              <li class="skills__item">React</li>
+              <li class="skills__item">TypeScript</li>
+              <li class="skills__item">Responsive Design</li>
+            </ul>
+          </div>
+          <div class="skills__category">
+            <h3 class="skills__category-title">
+              <i class="fa-solid fa-palette"></i> Design
+            </h3>
+            <ul class="skills__list">
+              <li class="skills__item">Figma</li>
+              <li class="skills__item">UI/UX Principles</li>
+              <li class="skills__item">CSS Animations</li>
+              <li class="skills__item">Accessibility (WCAG)</li>
+            </ul>
+          </div>
+          <div class="skills__category">
+            <h3 class="skills__category-title">
+              <i class="fa-solid fa-wrench"></i> Tools
+            </h3>
+            <ul class="skills__list">
+              <li class="skills__item">Git &amp; GitHub</li>
+              <li class="skills__item">VS Code</li>
+              <li class="skills__item">Webpack / Vite</li>
+              <li class="skills__item">npm / yarn</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <h2 class="section__title">Projects</h2>
+        <p class="section__subtitle">Selected work and side projects</p>
+        <div class="projects__grid">
+          <article class="project-card">
+            <div class="project-card__image project-card__image--1">
+              <i class="fa-solid fa-cloud-sun"></i>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Weather Dashboard</h3>
+              <p class="project-card__description">
+                A real-time weather app with location search, 5-day forecasts, and dynamic
+                backgrounds that change based on conditions.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">HTML</span>
+                <span class="project-card__tag">CSS</span>
+                <span class="project-card__tag">JavaScript</span>
+                <span class="project-card__tag">API</span>
+              </div>
+              <div class="project-card__links">
+                <a href="#" class="project-card__link" aria-label="View Weather Dashboard live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+                <a href="#" class="project-card__link" aria-label="View Weather Dashboard source code">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__image project-card__image--2">
+              <i class="fa-solid fa-list-check"></i>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Task Manager Pro</h3>
+              <p class="project-card__description">
+                A productivity app with drag-and-drop task boards, priority labels, and
+                local storage persistence for offline use.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">React</span>
+                <span class="project-card__tag">CSS Grid</span>
+                <span class="project-card__tag">LocalStorage</span>
+              </div>
+              <div class="project-card__links">
+                <a href="#" class="project-card__link" aria-label="View Task Manager Pro live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+                <a href="#" class="project-card__link" aria-label="View Task Manager Pro source code">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__image project-card__image--3">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Dev Blog Platform</h3>
+              <p class="project-card__description">
+                A minimalist blog with markdown support, syntax highlighting, and a
+                fully responsive reading experience on any device.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">Next.js</span>
+                <span class="project-card__tag">MDX</span>
+                <span class="project-card__tag">Tailwind</span>
+              </div>
+              <div class="project-card__links">
+                <a href="#" class="project-card__link" aria-label="View Dev Blog Platform live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+                <a href="#" class="project-card__link" aria-label="View Dev Blog Platform source code">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <h2 class="section__title">Get In Touch</h2>
+        <p class="section__subtitle">Have a project in mind? Let's talk.</p>
+        <div class="contact__grid">
+          <div class="contact__info">
+            <p class="contact__text">
+              I'm currently open to freelance opportunities and full-time roles.
+              Whether you have a question or just want to say hi, feel free to reach out.
+            </p>
+            <ul class="contact__details">
+              <li class="contact__detail">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:alex.morgan@email.com">alex.morgan@email.com</a>
+              </li>
+              <li class="contact__detail">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+14155551234">+1 (415) 555-1234</a>
+              </li>
+              <li class="contact__detail">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>San Francisco, CA</span>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact__form" id="contact-form" novalidate>
+            <div class="form__group">
+              <label for="name" class="form__label">Name</label>
+              <input type="text" id="name" name="name" class="form__input" placeholder="Your name" required autocomplete="name">
+              <span class="form__error" id="name-error"></span>
+            </div>
+            <div class="form__group">
+              <label for="email" class="form__label">Email</label>
+              <input type="email" id="email" name="email" class="form__input" placeholder="you@example.com" required autocomplete="email">
+              <span class="form__error" id="email-error"></span>
+            </div>
+            <div class="form__group">
+              <label for="subject" class="form__label">Subject</label>
+              <input type="text" id="subject" name="subject" class="form__input" placeholder="What's this about?" required>
+              <span class="form__error" id="subject-error"></span>
+            </div>
+            <div class="form__group">
+              <label for="message" class="form__label">Message</label>
+              <textarea id="message" name="message" class="form__input form__textarea" rows="5" placeholder="Your message..." required></textarea>
+              <span class="form__error" id="message-error"></span>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+            <p class="form__success" id="form-success" hidden>
+              <i class="fa-solid fa-circle-check"></i> Thank you! Your message has been sent successfully.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <p class="footer__text">&copy; 2026 Alex Morgan. Built with HTML, CSS &amp; JavaScript.</p>
+      <div class="footer__social">
+        <a href="https://github.com" class="footer__social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://linkedin.com" class="footer__social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://twitter.com" class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
