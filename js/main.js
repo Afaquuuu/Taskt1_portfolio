@@ -17,6 +17,53 @@
   const contactForm = document.getElementById('contact-form');
   const formSuccess = document.getElementById('form-success');
   const sections = document.querySelectorAll('section[id]');
+  const header = document.getElementById('header');
+
+  /* --------------------------------------------------------------------------
+     Header Scroll Effect
+     -------------------------------------------------------------------------- */
+
+  function handleHeaderScroll() {
+    header.classList.toggle('is-scrolled', window.scrollY > 20);
+  }
+
+  window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+  handleHeaderScroll();
+
+  /* --------------------------------------------------------------------------
+     Scroll Reveal
+     -------------------------------------------------------------------------- */
+
+  const revealElements = document.querySelectorAll(
+    '.hero__content, .hero__visual, .about__grid, .skills__category, .project-card, .contact__grid'
+  );
+
+  revealElements.forEach(function (el) {
+    el.classList.add('reveal');
+  });
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    revealElements.forEach(function (el, index) {
+      el.style.transitionDelay = index % 4 * 0.08 + 's';
+      revealObserver.observe(el);
+    });
+  } else {
+    revealElements.forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
 
   /* --------------------------------------------------------------------------
      Mobile Navigation
