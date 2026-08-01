@@ -18,6 +18,158 @@
   const formSuccess = document.getElementById('form-success');
   const sections = document.querySelectorAll('section[id]');
   const header = document.getElementById('header');
+  const scrollProgress = document.getElementById('scroll-progress');
+  const cursorGlow = document.getElementById('cursor-glow');
+  const backToTop = document.getElementById('back-to-top');
+  const heroTyping = document.getElementById('hero-typing');
+  const navIndicator = document.getElementById('nav-indicator');
+  const navBackdrop = document.getElementById('nav-backdrop');
+
+  /* --------------------------------------------------------------------------
+     Nav Pill Indicator (desktop)
+     -------------------------------------------------------------------------- */
+
+  function updateNavIndicator() {
+    if (!navIndicator || window.innerWidth < 768) return;
+
+    const activeLink = document.querySelector('.nav__link.is-active');
+    if (!activeLink) {
+      navIndicator.style.opacity = '0';
+      return;
+    }
+
+    const menuRect = navMenu.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+
+    navIndicator.style.opacity = '1';
+    navIndicator.style.width = linkRect.width + 'px';
+    navIndicator.style.transform =
+      'translate(' + (linkRect.left - menuRect.left) + 'px, ' +
+      (linkRect.top - menuRect.top) + 'px)';
+  }
+
+  window.addEventListener('resize', updateNavIndicator);
+  window.addEventListener('load', updateNavIndicator);
+
+  /* --------------------------------------------------------------------------
+     Scroll Progress & Back to Top
+     -------------------------------------------------------------------------- */
+
+  function handleScrollUI() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    if (scrollProgress) {
+      scrollProgress.style.width = progress + '%';
+    }
+
+    if (backToTop) {
+      backToTop.hidden = scrollTop < 400;
+    }
+  }
+
+  window.addEventListener('scroll', handleScrollUI, { passive: true });
+  handleScrollUI();
+
+  if (backToTop) {
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     Cursor Glow (desktop)
+     -------------------------------------------------------------------------- */
+
+  if (cursorGlow && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', function (e) {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     Hero Typing Effect
+     -------------------------------------------------------------------------- */
+
+  if (heroTyping) {
+    const roles = [
+      'Front-End Developer',
+      'Full-Stack Builder',
+      'UI Engineer',
+      'Next.js Developer'
+    ];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeRole() {
+      const current = roles[roleIndex];
+
+      if (!isDeleting) {
+        heroTyping.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex === current.length) {
+          isDeleting = true;
+          setTimeout(typeRole, 2000);
+          return;
+        }
+      } else {
+        heroTyping.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+
+      setTimeout(typeRole, isDeleting ? 40 : 80);
+    }
+
+    typeRole();
+  }
+
+  /* --------------------------------------------------------------------------
+     Stats Counter Animation
+     -------------------------------------------------------------------------- */
+
+  const statValues = document.querySelectorAll('.hero__stat-value[data-count]');
+
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    const duration = 1200;
+    const start = performance.now();
+
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  if (statValues.length && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    statValues.forEach(function (el) {
+      counterObserver.observe(el);
+    });
+  }
 
   /* --------------------------------------------------------------------------
      Header Scroll Effect
@@ -71,6 +223,10 @@
 
   function openNav() {
     navMenu.classList.add('is-open');
+    if (navBackdrop) {
+      navBackdrop.classList.add('is-visible');
+      navBackdrop.setAttribute('aria-hidden', 'false');
+    }
     navToggle.setAttribute('aria-expanded', 'true');
     navToggle.setAttribute('aria-label', 'Close menu');
     document.body.style.overflow = 'hidden';
@@ -78,6 +234,10 @@
 
   function closeNav() {
     navMenu.classList.remove('is-open');
+    if (navBackdrop) {
+      navBackdrop.classList.remove('is-visible');
+      navBackdrop.setAttribute('aria-hidden', 'true');
+    }
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
@@ -88,8 +248,15 @@
     isOpen ? closeNav() : openNav();
   });
 
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', closeNav);
+  }
+
   navLinks.forEach(function (link) {
-    link.addEventListener('click', closeNav);
+    link.addEventListener('click', function () {
+      closeNav();
+      setTimeout(updateNavIndicator, 50);
+    });
   });
 
   document.addEventListener('keydown', function (e) {
@@ -149,6 +316,8 @@
         });
       }
     });
+
+    updateNavIndicator();
   }
 
   window.addEventListener('scroll', setActiveNavLink, { passive: true });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,29 +12,70 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <header class="header" id="header">
     <nav class="nav container" aria-label="Main navigation">
       <a href="#hero" class="nav__logo">Afaq<span class="nav__logo-accent">.</span>Shah</a>
 
-      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
-        <span class="nav__toggle-bar"></span>
-        <span class="nav__toggle-bar"></span>
-        <span class="nav__toggle-bar"></span>
-      </button>
+      <div class="nav__center">
+        <div class="nav__backdrop" id="nav-backdrop" aria-hidden="true"></div>
+        <ul class="nav__menu" id="nav-menu">
+          <span class="nav__indicator" id="nav-indicator" aria-hidden="true"></span>
+          <li class="nav__drawer-header" aria-hidden="true">
+            <span class="nav__drawer-label">Navigation</span>
+            <p class="nav__drawer-sub">Explore my portfolio</p>
+          </li>
+          <li class="nav__drawer-item">
+            <a href="#about" class="nav__link">
+              <span class="nav__link-num">01</span>
+              <span class="nav__link-text">About</span>
+              <i class="fa-solid fa-arrow-right nav__link-arrow"></i>
+            </a>
+          </li>
+          <li class="nav__drawer-item">
+            <a href="#skills" class="nav__link">
+              <span class="nav__link-num">02</span>
+              <span class="nav__link-text">Skills</span>
+              <i class="fa-solid fa-arrow-right nav__link-arrow"></i>
+            </a>
+          </li>
+          <li class="nav__drawer-item">
+            <a href="#projects" class="nav__link">
+              <span class="nav__link-num">03</span>
+              <span class="nav__link-text">Projects</span>
+              <i class="fa-solid fa-arrow-right nav__link-arrow"></i>
+            </a>
+          </li>
+          <li class="nav__drawer-item">
+            <a href="#contact" class="nav__link">
+              <span class="nav__link-num">04</span>
+              <span class="nav__link-text">Contact</span>
+              <i class="fa-solid fa-arrow-right nav__link-arrow"></i>
+            </a>
+          </li>
+          <li class="nav__drawer-footer" aria-hidden="true">
+            <a href="mailto:saasali799@gmail.com" class="nav__drawer-email">
+              <i class="fa-solid fa-envelope"></i> saasali799@gmail.com
+            </a>
+          </li>
+        </ul>
+      </div>
 
-      <ul class="nav__menu" id="nav-menu">
-        <li><a href="#about" class="nav__link">About</a></li>
-        <li><a href="#skills" class="nav__link">Skills</a></li>
-        <li><a href="#projects" class="nav__link">Projects</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
-      </ul>
-
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--moon"></i>
-        <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--sun"></i>
-      </button>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--moon"></i>
+          <i class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--sun"></i>
+        </button>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+        </button>
+      </div>
     </nav>
   </header>
 
@@ -52,22 +93,26 @@
           <span class="hero__badge"><i class="fa-solid fa-circle"></i> Available for work</span>
           <p class="hero__greeting">Hello, I'm</p>
           <h1 class="hero__title">Syed Afaq <span class="hero__title-accent">Ali Shah</span></h1>
-          <p class="hero__subtitle">Front-End Developer &amp; Full-Stack Builder</p>
+          <p class="hero__subtitle">
+            <span class="hero__subtitle-static">I'm a </span>
+            <span class="hero__typing" id="hero-typing" aria-live="polite">Front-End Developer</span>
+            <span class="hero__cursor" aria-hidden="true">|</span>
+          </p>
           <p class="hero__description">
             I craft responsive, accessible web experiences with clean code and thoughtful design.
             From SaaS platforms to e-commerce stores — I turn ideas into production-ready products.
           </p>
           <ul class="hero__stats">
             <li class="hero__stat">
-              <strong class="hero__stat-value">4+</strong>
+              <strong class="hero__stat-value" data-count="4">0</strong>
               <span class="hero__stat-label">Live Projects</span>
             </li>
             <li class="hero__stat">
-              <strong class="hero__stat-value">2+</strong>
+              <strong class="hero__stat-value" data-count="2">0</strong>
               <span class="hero__stat-label">Years Experience</span>
             </li>
             <li class="hero__stat">
-              <strong class="hero__stat-value">10+</strong>
+              <strong class="hero__stat-value" data-count="10">0</strong>
               <span class="hero__stat-label">Technologies</span>
             </li>
           </ul>
@@ -100,12 +145,23 @@
             <i class="fa-solid fa-database"></i>
             <span>MongoDB</span>
           </div>
+          <div class="hero__float-card hero__float-card--3">
+            <i class="fa-brands fa-react"></i>
+            <span>React</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__marquee" aria-hidden="true">
+        <div class="hero__marquee-track">
+          <span>Next.js</span><span>TypeScript</span><span>React</span><span>MongoDB</span><span>PostgreSQL</span><span>Tailwind CSS</span><span>Node.js</span><span>Prisma</span>
+          <span>Next.js</span><span>TypeScript</span><span>React</span><span>MongoDB</span><span>PostgreSQL</span><span>Tailwind CSS</span><span>Node.js</span><span>Prisma</span>
         </div>
       </div>
     </section>
 
     <!-- About -->
-    <section class="about section" id="about">
+    <section class="about section section--glow" id="about">
+      <div class="section__blob section__blob--1" aria-hidden="true"></div>
       <div class="container">
         <span class="section__eyebrow">About</span>
         <h2 class="section__title">About Me</h2>
@@ -200,11 +256,21 @@
         <h2 class="section__title">Projects</h2>
         <p class="section__subtitle">Real projects I've designed and built</p>
         <div class="projects__grid">
-          <article class="project-card">
+          <article class="project-card project-card--featured">
             <div class="project-card__image project-card__image--1">
-              <i class="fa-solid fa-school"></i>
+              <span class="project-card__number">01</span>
+              <span class="project-card__badge">Featured</span>
+              <div class="project-card__icon-wrap">
+                <i class="fa-solid fa-school"></i>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__category">SaaS Platform</span>
+              </div>
             </div>
             <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__status"><i class="fa-solid fa-circle"></i> Live</span>
+              </div>
               <h3 class="project-card__title">EduManage Plus</h3>
               <p class="project-card__description">
                 A multi-tenant SaaS school management platform for students, staff, attendance,
@@ -216,11 +282,11 @@
                 <span class="project-card__tag">PostgreSQL</span>
                 <span class="project-card__tag">Prisma</span>
               </div>
-              <div class="project-card__links">
-                <a href="https://edumanageplus.org/school-auth" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="View EduManage Plus live demo">
+              <div class="project-card__footer">
+                <a href="https://edumanageplus.org/school-auth" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="View EduManage Plus live demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
                 </a>
-                <a href="https://github.com/Afaquuuu/school-management-system" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="View EduManage Plus source code">
+                <a href="https://github.com/Afaquuuu/school-management-system" class="project-card__link project-card__link--code" target="_blank" rel="noopener noreferrer" aria-label="View EduManage Plus source code">
                   <i class="fa-brands fa-github"></i> Code
                 </a>
               </div>
@@ -229,9 +295,18 @@
 
           <article class="project-card">
             <div class="project-card__image project-card__image--2">
-              <i class="fa-solid fa-bag-shopping"></i>
+              <span class="project-card__number">02</span>
+              <div class="project-card__icon-wrap">
+                <i class="fa-solid fa-bag-shopping"></i>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__category">E-Commerce</span>
+              </div>
             </div>
             <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__status"><i class="fa-solid fa-circle"></i> Live</span>
+              </div>
               <h3 class="project-card__title">MeritMarket</h3>
               <p class="project-card__description">
                 A premium luxury e-commerce store for perfumes, fashion, electronics, and accessories
@@ -243,11 +318,11 @@
                 <span class="project-card__tag">Tailwind</span>
                 <span class="project-card__tag">Zustand</span>
               </div>
-              <div class="project-card__links">
-                <a href="https://meritmarket.store" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="View MeritMarket live demo">
+              <div class="project-card__footer">
+                <a href="https://meritmarket.store" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="View MeritMarket live demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
                 </a>
-                <a href="https://github.com/Afaquuuu/MeritMarket_store" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="View MeritMarket source code">
+                <a href="https://github.com/Afaquuuu/MeritMarket_store" class="project-card__link project-card__link--code" target="_blank" rel="noopener noreferrer" aria-label="View MeritMarket source code">
                   <i class="fa-brands fa-github"></i> Code
                 </a>
               </div>
@@ -256,9 +331,18 @@
 
           <article class="project-card">
             <div class="project-card__image project-card__image--3">
-              <i class="fa-solid fa-utensils"></i>
+              <span class="project-card__number">03</span>
+              <div class="project-card__icon-wrap">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__category">Food &amp; Ordering</span>
+              </div>
             </div>
             <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__status"><i class="fa-solid fa-circle"></i> Live</span>
+              </div>
               <h3 class="project-card__title">Metal Cafe</h3>
               <p class="project-card__description">
                 A food ordering website for Metal Cafe, Kohat — interactive menu, cart, delivery
@@ -270,11 +354,11 @@
                 <span class="project-card__tag">Framer Motion</span>
                 <span class="project-card__tag">Vercel</span>
               </div>
-              <div class="project-card__links">
-                <a href="https://metal-store.vercel.app" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="View Metal Cafe live demo">
+              <div class="project-card__footer">
+                <a href="https://metal-store.vercel.app" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="View Metal Cafe live demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
                 </a>
-                <a href="https://github.com/Afaquuuu/Metal_store" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="View Metal Cafe source code">
+                <a href="https://github.com/Afaquuuu/Metal_store" class="project-card__link project-card__link--code" target="_blank" rel="noopener noreferrer" aria-label="View Metal Cafe source code">
                   <i class="fa-brands fa-github"></i> Code
                 </a>
               </div>
@@ -283,9 +367,18 @@
 
           <article class="project-card">
             <div class="project-card__image project-card__image--4">
-              <i class="fa-solid fa-store"></i>
+              <span class="project-card__number">04</span>
+              <div class="project-card__icon-wrap">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__category">E-Commerce</span>
+              </div>
             </div>
             <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__status"><i class="fa-solid fa-circle"></i> Live</span>
+              </div>
               <h3 class="project-card__title">Waow Essentials</h3>
               <p class="project-card__description">
                 A premium general-store e-commerce platform with collections, 3-step checkout,
@@ -297,11 +390,11 @@
                 <span class="project-card__tag">Recharts</span>
                 <span class="project-card__tag">Zod</span>
               </div>
-              <div class="project-card__links">
-                <a href="https://waow-essentials.vercel.app/" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="View Waow Essentials live demo">
+              <div class="project-card__footer">
+                <a href="https://waow-essentials.vercel.app/" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="View Waow Essentials live demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
                 </a>
-                <a href="https://github.com/Afaquuuu/Waow-Essentials" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="View Waow Essentials source code">
+                <a href="https://github.com/Afaquuuu/Waow-Essentials" class="project-card__link project-card__link--code" target="_blank" rel="noopener noreferrer" aria-label="View Waow Essentials source code">
                   <i class="fa-brands fa-github"></i> Code
                 </a>
               </div>
@@ -369,6 +462,10 @@
       </div>
     </section>
   </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" hidden>
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <footer class="footer">
     <div class="container footer__container">
